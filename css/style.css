@@ -1,4 +1,4 @@
-/* ========== RESET and BASE ========== */
+/* ===== RESET AND BASE ===== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +12,7 @@ body {
   line-height: 1.5;
 }
 
-/* ========== LAYOUT ========== */
+/* ===== LAYOUT ===== */
 header {
   background-color: #4CAF50;
   color: white;
@@ -26,26 +26,25 @@ main {
   padding: 1rem;
 }
 
-/* ========== SECTIONS ========== */
+/* ===== SECTIONS ===== */
 section {
   background: white;
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 6px;
-  animation: fadeIn 0.5s ease-in;
 }
 
 h2 {
   margin-bottom: 0.5rem;
 }
 
-/* ========== SUMMARY ========== */
+/* ===== SUMMARY ===== */
 #summary p {
   margin: 0.3rem 0;
   font-weight: bold;
 }
 
-/* ========== FORM ========== */
+/* ===== FORM ===== */
 form {
   display: flex;
   flex-direction: column;
@@ -76,40 +75,70 @@ button:hover {
   background-color: #1976D2;
 }
 
-/* ========== TRANSACTIONS ========== */
-#transaction-list li {
-  padding: 0.4rem;
-  border-bottom: 1px solid #ddd;
-  animation: slideIn 0.3s ease-in;
+/* ===== TRANSACTION LIST ===== */
+#transaction-list {
+  list-style: none;
+  padding: 0;
 }
 
-/* ========== ANIMATIONS ========== */
-@keyframes fadeIn {
+/* Transaction card */
+.transaction-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #f9f9f9;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.6rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.transaction-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Income and expense colors */
+.transaction-card.income {
+  border-left: 5px solid #4CAF50;
+}
+
+.transaction-card.expense {
+  border-left: 5px solid #F44336;
+}
+
+/* Clock icon */
+.transaction-card .icon {
+  font-size: 1.2rem;
+}
+
+/* Text inside the card */
+.transaction-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Animation only for new transactions */
+.transaction-card.new {
+  animation: cardFadeIn 0.4s ease-in;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes cardFadeIn {
   from {
     opacity: 0;
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes slideIn {
-  from {
-    transform: translateX(-10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 600px) {
-  main {
-    margin: 0.5rem;
-  }
-}
+/* ===== FOOTER ===== */
 footer {
   background-color: #333;
   color: white;
@@ -121,40 +150,10 @@ footer {
 footer p {
   font-size: 0.9rem;
 }
-/* ===== Transaction Cards ===== */
-#transaction-list {
-  list-style: none;
-  padding: 0;
-}
 
-.transaction-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f9f9f9;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.5rem;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  animation: cardFadeIn 0.4s ease-in;
-}
-
-.transaction-card.income {
-  border-left: 5px solid #4CAF50;
-}
-
-.transaction-card.expense {
-  border-left: 5px solid #F44336;
-}
-
-/* ===== Animation ===== */
-@keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  main {
+    margin: 0.5rem;
   }
 }

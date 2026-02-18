@@ -1,6 +1,6 @@
 import { getTransactions } from './storage.js';
 
-// Display transactions and update income, expenses, and balance
+// Display transactions and update summary
 export function renderTransactions() {
   const list = document.querySelector('#transaction-list');
   const incomeEl = document.querySelector('#income');
@@ -12,15 +12,26 @@ export function renderTransactions() {
   let income = 0;
   let expenses = 0;
 
-  getTransactions().forEach(transaction => {
-    const li = document.createElement('li');
-li.classList.add('transaction-card', transaction.type);
-li.innerHTML = `
-  <strong>${transaction.type.toUpperCase()}</strong>
-  <span>$${transaction.amount}</span>
-`;
-list.appendChild(li);
+  const transactions = getTransactions();
 
+  transactions.forEach((transaction, index) => {
+    const li = document.createElement('li');
+    li.classList.add('transaction-card', transaction.type);
+
+    // Animate only the newest transaction
+    if (index === transactions.length - 1) {
+      li.classList.add('new');
+    }
+
+    li.innerHTML = `
+      <span class="icon">🕒</span>
+      <div class="transaction-info">
+        <strong>${transaction.type.toUpperCase()}</strong>
+        <span>$${transaction.amount}</span>
+      </div>
+    `;
+
+    list.appendChild(li);
 
     if (transaction.type === 'income') {
       income += transaction.amount;
