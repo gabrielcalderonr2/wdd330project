@@ -121,3 +121,40 @@ footer {
 footer p {
   font-size: 0.9rem;
 }
+/* ===== Transaction Cards ===== */
+#transaction-list {
+  list-style: none;
+  padding: 0;
+}
+
+.transaction-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  animation: cardFadeIn 0.4s ease-in;
+}
+
+.transaction-card.income {
+  border-left: 5px solid #4CAF50;
+}
+
+.transaction-card.expense {
+  border-left: 5px solid #F44336;
+}
+
+/* ===== Animation ===== */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -14,8 +14,13 @@ export function renderTransactions() {
 
   getTransactions().forEach(transaction => {
     const li = document.createElement('li');
-    li.textContent = `${transaction.type}: $${transaction.amount}`;
-    list.appendChild(li);
+li.classList.add('transaction-card', transaction.type);
+li.innerHTML = `
+  <strong>${transaction.type.toUpperCase()}</strong>
+  <span>$${transaction.amount}</span>
+`;
+list.appendChild(li);
+
 
     if (transaction.type === 'income') {
       income += transaction.amount;
