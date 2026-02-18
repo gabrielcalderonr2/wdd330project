@@ -110,3 +110,14 @@ button:hover {
     margin: 0.5rem;
   }
 }
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
