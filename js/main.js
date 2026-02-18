@@ -43,6 +43,9 @@ async function updateConvertedBalance() {
 }
 async function loadCurrencies() {
   const currencies = await getCurrencies();
+
+  if (currencies.length === 0) return;
+
   currencies.forEach(code => {
     const option = document.createElement('option');
     option.value = code;
@@ -50,3 +53,4 @@ async function loadCurrencies() {
     currencySelect.appendChild(option);
   });
 }
+

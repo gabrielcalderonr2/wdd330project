@@ -1,12 +1,22 @@
-// Fetch country and currency data
+// Fetch country currency codes using REST Countries API
 
-const API_URL = 'https://restcountries.com/v3.1/all';
+const API_URL = 'https://restcountries.com/v3.1/region/americas';
 
-// Get list of currencies from countries API
+// Get a list of currency codes
 export async function getCurrencies() {
   try {
     const response = await fetch(API_URL);
+
+    if (!response.ok) {
+      throw new Error('API request failed');
+    }
+
     const data = await response.json();
+
+    // Make sure the response is an array
+    if (!Array.isArray(data)) {
+      return [];
+    }
 
     const currencies = new Set();
 
